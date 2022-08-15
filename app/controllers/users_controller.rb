@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
+  # GET '/me'
+  def show
+    user = User.find_by(id: session[:user_id])
+    render json: user
+  end
+
   private
 
   def user_params
@@ -18,6 +24,7 @@ class UsersController < ApplicationController
   def authorize
     return render json: { error: 'Not authorized' }, status: :unauthorized unless session.include? :user_id
   end
+
   def render_unprocessable_entity_response(invalid)
     render json: { errors: invalid.record.errors }, status: :unprocessable_entity
   end
