@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   def create
-    user = User.create(user_params)
+    user = User.create!(user_params)
     render json: user, status: :created
   end
 
