@@ -14,12 +14,12 @@ ActiveRecord::Schema.define(version: 2022_08_15_190207) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
-    t.string "instructions"
-    t.string "text"
-    t.string "minutes_to_complete"
-    t.string "integer"
+    t.text "instructions"
+    t.integer "minutes_to_complete"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +31,5 @@ ActiveRecord::Schema.define(version: 2022_08_15_190207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "recipes", "users"
 end

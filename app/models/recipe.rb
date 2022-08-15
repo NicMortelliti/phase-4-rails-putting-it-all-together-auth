@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-  has_secure_password
+  # Title  must be present
   validates :title, presence: true
 
   # Instructions must be present and at least 50 chars
