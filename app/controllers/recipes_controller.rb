@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
 
   # GET '/recipes'
   def index
-    byebug
     render json: Recipe.all
   end
 end
