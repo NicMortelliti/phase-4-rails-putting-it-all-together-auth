@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   get '/recipes', to: 'recipes#index'
 
+  post '/recipes', to: 'recipes#create'
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
 
